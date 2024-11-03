@@ -63,7 +63,7 @@ Para ejecutar la aplicación en modo producción:
 ```bash
 npm start
 ```
-La aplicación estará disponible en:  ```http://localhost:3000.```
+La aplicación estará disponible en:  ```http://localhost:3000```
 
 #### Archivos Importantes
 
