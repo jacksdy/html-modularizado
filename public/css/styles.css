@@ -96,6 +96,8 @@ footer p {
     right: 0;
     left: 50%; /* Cambia este valor según cómo desees que se posicione la imagen */
     z-index: 0;
+    width: 50%; 
+    height: 100%;
 }
 
 /* Estilos para la sección Contacto */
@@ -104,11 +106,14 @@ footer p {
     justify-content: center;
     align-items: center;
     padding: 2em;
-    background-color: #fff;
+    background-color: #13111107;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 2em 0;
+    width: 50%; 
+    margin-left: auto; /* Centra la sección horizontalmente */ 
+    margin-right: auto; /* Centra la sección horizontalmente */
 }
 
 .contact-content {
