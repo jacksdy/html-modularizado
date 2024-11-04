@@ -14,7 +14,7 @@ header, footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 1em 0;
+    padding: 0.5em 0;
     flex-shrink: 0;
 }
 
@@ -58,7 +58,7 @@ main {
 
 .nav-links li a.active {
     font-weight: bold;
-    border-bottom: 2px solid yellow;
+    border-bottom: 5px solid yellow;
 }
 
 footer p {
@@ -105,13 +105,13 @@ footer p {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2em;
+    padding: 1em;
     background-color: #13111107;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 2em 0;
-    width: 50%; 
+    width: 40%; 
     margin-left: auto; /* Centra la sección horizontalmente */ 
     margin-right: auto; /* Centra la sección horizontalmente */
 }
@@ -141,12 +141,12 @@ form {
 }
 
 form label {
-    margin-top: 1em;
+    margin-top: 0.5em;
 }
 
 form input, form textarea {
-    padding: 1em; /* Aumenta el padding para hacer los inputs más grandes */
-    font-size: 1.2em; /* Aumenta el tamaño de la fuente */
+    padding: 0.5em; /* Aumenta el padding para hacer los inputs más grandes */
+    font-size: 1.0em; /* Aumenta el tamaño de la fuente */
     border: 1px solid #ddd;
     border-radius: 3px;
     margin-top: 0.5em;

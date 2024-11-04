@@ -89,9 +89,10 @@ async function setupContactForm(): Promise<void> {
                         formStatus.textContent = 'Mensaje enviado con éxito!';
                     }
                     form.reset();
-                } else if (formStatus) {
+                } else {
+                    if (formStatus) {
                         formStatus.textContent = 'Error al enviar el mensaje.';
-
+                    }
                 }
             } catch (error) {
                 if (formStatus) {
