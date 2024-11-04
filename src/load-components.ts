@@ -1,14 +1,14 @@
-async function loadComponent(url, element) {
+async function loadComponent(url: string, element: HTMLElement): Promise<void> {
     try {
-        const response = await fetch(url);
+        const response: Response = await fetch(url);
         if (!response.ok) {
             console.error(`Failed to load ${url}: ${response.statusText}`);
             return;
         }
-        const text = await response.text();
-        const tempDiv = document.createElement('div');
+        const text: string = await response.text();
+        const tempDiv: HTMLDivElement = document.createElement('div');
         tempDiv.innerHTML = text.trim();
-        const template = tempDiv.querySelector('template');
+        const template: HTMLTemplateElement | null = tempDiv.querySelector('template');
         if (template) {
             element.innerHTML = '';
             element.appendChild(template.content.cloneNode(true));
@@ -21,39 +21,39 @@ async function loadComponent(url, element) {
     }
 }
 
-async function loadAllComponents() {
-    await loadComponent('header.html', document.querySelector('header'));
-    await loadComponent('principal.html', document.querySelector('main'));
-    await loadComponent('footer.html', document.querySelector('footer'));
+async function loadAllComponents(): Promise<void> {
+    await loadComponent('header.html', document.querySelector('header') as HTMLElement);
+    await loadComponent('principal.html', document.querySelector('main') as HTMLElement);
+    await loadComponent('footer.html', document.querySelector('footer') as HTMLElement);
     console.log('Components loaded');
 
-    // Verificar si los componentes están realmente en el DOM
-    console.log('Header HTML:', document.querySelector('header').innerHTML);
-    console.log('Main HTML:', document.querySelector('main').innerHTML);
-    console.log('Footer HTML:', document.querySelector('footer').innerHTML);
+    console.log('Header HTML:', document.querySelector('header')?.innerHTML);
+    console.log('Main HTML:', document.querySelector('main')?.innerHTML);
+    console.log('Footer HTML:', document.querySelector('footer')?.innerHTML);
 }
 
 loadAllComponents();
 
-document.addEventListener('click', (event) => {
-    if (event.target.id === 'link-inicio') {
-        loadComponent('principal.html', document.querySelector('main'));
-        setActiveLink(event.target.id);
-    } else if (event.target.id === 'link-servicios') {
-        loadComponent('servicios.html', document.querySelector('main'));
-        setActiveLink(event.target.id);
-    } else if (event.target.id === 'link-acerca') {
-        loadComponent('acerca.html', document.querySelector('main'));
-        setActiveLink(event.target.id);
-    } else if (event.target.id === 'link-contacto') {
-        loadComponent('contacto.html', document.querySelector('main')).then(() => {
+document.addEventListener('click', (event: Event) => {
+    const target = event.target as HTMLElement;
+    if (target.id === 'link-inicio') {
+        loadComponent('principal.html', document.querySelector('main') as HTMLElement);
+        setActiveLink(target.id);
+    } else if (target.id === 'link-servicios') {
+        loadComponent('servicios.html', document.querySelector('main') as HTMLElement);
+        setActiveLink(target.id);
+    } else if (target.id === 'link-acerca') {
+        loadComponent('acerca.html', document.querySelector('main') as HTMLElement);
+        setActiveLink(target.id);
+    } else if (target.id === 'link-contacto') {
+        loadComponent('contacto.html', document.querySelector('main') as HTMLElement).then(() => {
             setupContactForm();
         });
-        setActiveLink(event.target.id);
+        setActiveLink(target.id);
     }
 });
 
-function setActiveLink(activeId) {
+function setActiveLink(activeId: string): void {
     document.querySelectorAll('nav ul li a').forEach(link => {
         if (link.id === activeId) {
             link.classList.add('active');
@@ -63,12 +63,12 @@ function setActiveLink(activeId) {
     });
 }
 
-async function setupContactForm() {
-    const form = document.getElementById('contact-form');
+async function setupContactForm(): Promise<void> {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
     if (form) {
-        form.addEventListener('submit', async (event) => {
+        form.addEventListener('submit', async (event: Event) => {
             event.preventDefault();
-            const formData = new URLSearchParams(new FormData(form)); // URLSearchParams para enviar datos como JSON
+            const formData = new URLSearchParams(new FormData(form) as any); // Convert FormData to URLSearchParams
             const formStatus = document.getElementById('form-status');
 
             if (formStatus) {
@@ -91,6 +91,7 @@ async function setupContactForm() {
                     form.reset();
                 } else if (formStatus) {
                         formStatus.textContent = 'Error al enviar el mensaje.';
+
                 }
             } catch (error) {
                 if (formStatus) {

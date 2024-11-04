@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/load-components.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^6.9.16",
+    "typescript": "^5.6.3"
   }
 }
