@@ -104,10 +104,8 @@ function setupContactForm() {
                         }
                         form.reset();
                     }
-                    else {
-                        if (formStatus) {
-                            formStatus.textContent = 'Error al enviar el mensaje.';
-                        }
+                    else if (formStatus) {
+                        formStatus.textContent = 'Error al enviar el mensaje.';
                     }
                 }
                 catch (error) {
